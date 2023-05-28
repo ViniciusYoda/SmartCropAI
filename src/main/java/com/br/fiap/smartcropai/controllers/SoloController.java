@@ -54,12 +54,9 @@ public class SoloController {
       @ApiResponse(responseCode = "200", description = "solos listado com sucesso"),
       @ApiResponse(responseCode = "400", description = "solos não encontrado")
    })
-   public PagedModel<EntityModel<Object>> index(@RequestParam(required = false) String busca, @ParameterObject @PageableDefault(size = 5) Pageable pageable){
-      Page<Solo> solos = (busca == null)?
-      repository.findAll(pageable):
-      repository.findByDescricaoContaining(busca, pageable);
-
-      return assembler.toModel(solos.map(Solo::toEntityModel));
+   public PagedModel<EntityModel<Object>> index(@ParameterObject @PageableDefault(size = 5) Pageable pageable){
+      Page<Solo> solos = repository.findAll(pageable);
+      return assembler.toModel(solos);
    }
 
    @PostMapping

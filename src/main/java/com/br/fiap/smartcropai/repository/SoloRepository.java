@@ -8,5 +8,5 @@ import com.br.fiap.smartcropai.models.Solo;
 
 public interface SoloRepository extends JpaRepository<Solo, Long> {
    
-   Page<Solo> findByDescricaoContaining(String busca, Pageable pageable);
+   
 }

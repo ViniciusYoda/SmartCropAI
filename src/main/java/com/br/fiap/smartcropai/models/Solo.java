@@ -47,13 +47,12 @@ public class Solo {
    private double condutEletrica;
 
    public EntityModel<Solo> toEntityModel(){
-   return EntityModel.of(
-   this,
-   linkTo(methodOn(SoloController.class).show(id)).withSelfRel(),
-   linkTo(methodOn(SoloController.class).destroy(id)).withRel("delete"),
-   linkTo(methodOn(SoloController.class).index(null,
-   Pageable.unpaged())).withRel("all"),
-   )
+      return EntityModel.of(
+         this,
+         linkTo(methodOn(SoloController.class).show(id)).withSelfRel(),
+         linkTo(methodOn(SoloController.class).destroy(id)).withRel("delete"),
+         linkTo(methodOn(SoloController.class).index(null, null)).withRel("all")
+      );
    }
 
 }
