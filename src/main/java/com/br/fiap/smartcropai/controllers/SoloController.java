@@ -1,5 +1,6 @@
 package com.br.fiap.smartcropai.controllers;
 
+
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
 import com.br.fiap.smartcropai.exceptions.RestNotFoundException;
@@ -35,29 +36,39 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/solo")
 @Slf4j
-@SecurityRequirement(name = "bearer-key")
+// @SecurityRequirement(name = "bearer-key")
 @Tag(name = "solo")
 public class SoloController {
 
    @Autowired
    SoloRepository repository;
 
-   @Autowired
-   PagedResourcesAssembler<Object> assembler;
+
+
+   @Autowired PagedResourcesAssembler<Solo> assembler;
+
 
    @GetMapping
    @Operation(
       summary = "Listar solos",
-      description = "Endpoint que retorna todos os solos registrado"
+      description = "Endpoint que retorna todos os solos registrados"
    )
    @ApiResponses ({
-      @ApiResponse(responseCode = "200", description = "solos listado com sucesso"),
-      @ApiResponse(responseCode = "400", description = "solos não encontrado")
+      @ApiResponse(responseCode = "200", description = "solos listados com sucesso"),
+      @ApiResponse(responseCode = "400", description = "solos não encontrados")
    })
-   public PagedModel<EntityModel<Object>> index(@ParameterObject @PageableDefault(size = 5) Pageable pageable){
+   public PagedModel<EntityModel<Solo>> index(@ParameterObject @PageableDefault(size = 5) Pageable pageable) {
       Page<Solo> solos = repository.findAll(pageable);
-      return assembler.toModel(solos);
+   
+      PagedModel<EntityModel<Solo>> pagedModel = assembler.toModel(solos);
+   
+      pagedModel.forEach(solo -> solo.add(linkTo(SoloController.class).slash(solo.getContent().getId()).withSelfRel()));
+      pagedModel.add(linkTo(SoloController.class).withSelfRel());
+   
+      return pagedModel;
    }
+   
+   
 
    @PostMapping
    @Operation(

@@ -1,9 +1,10 @@
 package com.br.fiap.smartcropai.models;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
 
 import com.br.fiap.smartcropai.controllers.SoloController;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,12 +13,12 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Entity
 @Data
@@ -46,12 +47,16 @@ public class Solo {
    @Min(value = 0, message = "deve ser positivo")
    private double condutEletrica;
 
-   public EntityModel<Solo> toEntityModel(){
+   public EntityModel<Solo> toEntityModel() {
+      Link selfLink = linkTo(SoloController.class).slash(id).withSelfRel();
+      Link deleteLink = linkTo(SoloController.class).slash(id).withRel("delete");
+      Link allLink = linkTo(SoloController.class).withRel("all");
+
       return EntityModel.of(
          this,
-         linkTo(methodOn(SoloController.class).show(id)).withSelfRel(),
-         linkTo(methodOn(SoloController.class).destroy(id)).withRel("delete"),
-         linkTo(methodOn(SoloController.class).index(null, null)).withRel("all")
+         selfLink,
+         deleteLink,
+         allLink
       );
    }
 
