@@ -45,7 +45,7 @@ public class Solo {
 
    @NotBlank
    @Size(min = 6, max = 12)
-   private double condutEletrica;
+   private String condutEletrica;
 
    public EntityModel<Solo> toEntityModel() {
       Link selfLink = linkTo(SoloController.class).slash(id).withSelfRel();

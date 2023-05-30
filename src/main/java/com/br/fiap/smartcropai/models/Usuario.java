@@ -44,10 +44,6 @@ public class Usuario implements UserDetails {
    @Size(min = 8, max = 20)
    private String senha;
 
-   @NotBlank
-   @Size(min = 8, max = 20)
-   private String confirmarSenha;
-
    @Override
    public Collection<? extends GrantedAuthority> getAuthorities() {
       return List.of(() -> "ROLE_USUARIO");

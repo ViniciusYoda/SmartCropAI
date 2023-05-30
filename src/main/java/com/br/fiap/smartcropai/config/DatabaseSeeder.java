@@ -32,13 +32,23 @@ public class DatabaseSeeder implements CommandLineRunner {
       .phDoSolo(6.5)
       .retencaoDeAgua("Alta")
       .condutEletrica("Cobre")
+      .build()
       );
       climaRepository.save(Clima.builder()
       .cep(12345678)
       .precipitacao(15.2)
       .umidade(68)
-      .velDirDoVento('Noroeste 25km/h')
+      .velDoVento(25)
+      .dirDoVento("Noroeste")
       .pressaoAtmosferica(1013)
+      .build()
+      );
+      usuarioRepository.save(Usuario.builder()
+      .nome("José Maria")
+      .cpf("12345678910")
+      .email("jose.marinha@gmail.com")
+      .senha("$2a$12$pMH3uGhwRXAaEq21jmmqn.PzxykI/HJyVAXM6sIQlcQ/2emqevaWC")
+      .build()
       );
    }
    

@@ -43,15 +43,19 @@ public class Clima {
    @Min(value = 1, message = "deve ser positivo")
    private double umidade;
 
+   @NotNull
+   @Min(value = 1, message = "deve ser positivo")
+   private double velDoVento;
+
    @NotBlank
    @Size(min = 6, max = 20)
-   private String velDirDoVento;
+   private String dirDoVento;
 
    @NotNull
    @Min(value = 1, message = "deve ser positivo")
    private double pressaoAtmosferica;
 
-   public EntityModel<Solo> toEntityModel() {
+   public EntityModel<Clima> toEntityModel() {
       Link selfLink = linkTo(ClimaController.class).slash(id).withSelfRel();
       Link deleteLink = linkTo(ClimaController.class).slash(id).withRel("delete");
       Link allLink = linkTo(ClimaController.class).withRel("all");
