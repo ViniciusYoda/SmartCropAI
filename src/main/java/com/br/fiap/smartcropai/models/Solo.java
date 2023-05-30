@@ -32,7 +32,7 @@ public class Solo {
    private Long id;
 
    @NotBlank
-   @Size(min = 10, max = 20)
+   @Size(min = 6, max = 12)
    private String texturaDoSolo;
 
    @NotNull
@@ -40,11 +40,11 @@ public class Solo {
    private double phDoSolo;
 
    @NotBlank
-   @Size(min = 10, max = 20)
+   @Size(min = 6, max = 12)
    private String retencaoDeAgua;
 
-   @NotNull
-   @Min(value = 0, message = "deve ser positivo")
+   @NotBlank
+   @Size(min = 6, max = 12)
    private double condutEletrica;
 
    public EntityModel<Solo> toEntityModel() {

@@ -31,25 +31,25 @@ public class Clima {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @NotBlank
-   @Size(min = 8)
-   private String cep;
+   @NotNull
+   @Min(value = 8, message = "deve ser positivo")
+   private double cep;
+
+   @NotNull
+   @Min(value = 1, message = "deve ser positivo")
+   private double precipitacao;
+
+   @NotNull
+   @Min(value = 1, message = "deve ser positivo")
+   private double umidade;
 
    @NotBlank
-   @Size(min = 8)
-   private String precipitacao;
+   @Size(min = 6, max = 20)
+   private String velDirDoVento;
 
-   @NotBlank
-   @Size(min = 10, max = 20)
-   private String umidade;
-
-   @NotBlank
-   @Size(min = 10, max = 20)
-   private String VelDirDoVento;
-
-   @NotBlank
-   @Size(min = 10, max = 20)
-   private String pressaoAtmosferica;
+   @NotNull
+   @Min(value = 1, message = "deve ser positivo")
+   private double pressaoAtmosferica;
 
    public EntityModel<Solo> toEntityModel() {
       Link selfLink = linkTo(ClimaController.class).slash(id).withSelfRel();
