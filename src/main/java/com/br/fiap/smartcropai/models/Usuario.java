@@ -33,6 +33,10 @@ public class Usuario implements UserDetails {
    private String nome;
 
    @NotBlank
+   @Size(min = 11)
+   private String cpf;
+
+   @NotBlank
    @Email
    private String email;
 

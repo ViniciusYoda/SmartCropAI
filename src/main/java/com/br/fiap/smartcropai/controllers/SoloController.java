@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/solo")
 @Slf4j
-// @SecurityRequirement(name = "bearer-key")
+@SecurityRequirement(name = "bearer-key")
 @Tag(name = "solo")
 public class SoloController {
 
