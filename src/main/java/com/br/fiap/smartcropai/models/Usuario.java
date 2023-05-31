@@ -3,6 +3,7 @@ package com.br.fiap.smartcropai.models;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
@@ -19,6 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table
 @Data
 @Builder
 @AllArgsConstructor
@@ -34,6 +37,7 @@ public class Usuario implements UserDetails {
 
    @NotBlank
    @Size(min = 11)
+   @CPF
    private String cpf;
 
    @NotBlank
