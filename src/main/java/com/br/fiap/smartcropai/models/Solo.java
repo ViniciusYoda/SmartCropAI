@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Entity
-@Table
+@Table(name = "Solo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
