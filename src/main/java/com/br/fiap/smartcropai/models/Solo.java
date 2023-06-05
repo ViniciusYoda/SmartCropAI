@@ -42,11 +42,11 @@ public class Solo {
    private double phDoSolo;
 
    @NotBlank
-   @Size(min = 6, max = 12)
+   @Size(min = 4, max = 12)
    private String retencaoDeAgua;
 
    @NotBlank
-   @Size(min = 6, max = 12)
+   @Size(min = 4, max = 12)
    private String condutEletrica;
 
    public EntityModel<Solo> toEntityModel() {
