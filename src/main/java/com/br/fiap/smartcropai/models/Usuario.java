@@ -32,7 +32,7 @@ public class Usuario implements UserDetails {
    private Long id;
 
    @NotBlank
-   @Size(min = 6, max = 40)
+   @Size(min = 3, max = 40)
    private String nome;
 
    @NotBlank
