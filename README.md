@@ -34,9 +34,9 @@ Api para controle de usuário, solo, clima do app SmartCropAI
 | Cep | string | sim | O cep precisa seguir esse padrão: 00000-000
 | Precipitação | String | sim | O campo pode ser alta ou baixa
 | Umidade |String | sim | O campo pode ser alta ou baixa
-| Vel. Do Vento | String | Campo para colocar velocidade do vento
-| Dir. Do Vento | String | Campo para colocar direção do vento
-| Pressão Atmosférica | String | Campo para colocar pressão atmosférica
+| Vel. Do Vento | String | sim | Campo para colocar velocidade do vento
+| Dir. Do Vento | String | sim | Campo para colocar direção do vento
+| Pressão Atmosférica | String | sim | Campo para colocar pressão atmosférica
 
 **Exemplo de corpo de requisição**
 
@@ -188,7 +188,7 @@ Api para controle de usuário, solo, clima do app SmartCropAI
 | Textura do Solo | string | sim | tipo de textura do solo
 | PH do solo | Double | sim | PH do solo
 | Retenção da água |String | sim | Se a retenção é alta ou baixa
-| Condutor Eletrica | String | Qual tipo de condutor eletrico
+| Condutor Eletrica | String | sim | Qual tipo de condutor eletrico
 
 **Exemplo de corpo de requisição**
 
@@ -329,7 +329,7 @@ Api para controle de usuário, solo, clima do app SmartCropAI
 | Nome | string | sim | Campo para colocar o nome do usuário
 | CPF | String | sim | CPF precisa seguir esse padrão: 000.000.000-00
 | Email |String | sim | Campo para colocar email
-| Senha | String | A senha precisa ter mais de 8 caracteres
+| Senha | String | sim | A senha precisa ter mais de 8 caracteres
 
 **Exemplo de corpo de requisição**
 
@@ -364,7 +364,7 @@ Api para controle de usuário, solo, clima do app SmartCropAI
 |-------|------|:-------------:|---
 | id | id | sim | O id precisa ser diferente para cada produto
 | Email |String | sim | Campo para colocar email
-| Senha | String | A senha precisa ser igual ao do cadastrado
+| Senha | String | sim | A senha precisa ser igual ao do cadastrado
 
 **Exemplo de corpo de requisição**
 
