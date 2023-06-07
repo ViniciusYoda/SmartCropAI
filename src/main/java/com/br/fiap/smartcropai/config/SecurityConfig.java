@@ -27,6 +27,8 @@ public class SecurityConfig {
                    .requestMatchers(HttpMethod.POST, "/api/cadastrar").permitAll()
                    .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
                    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                   .requestMatchers(HttpMethod.POST, "/api/clima").permitAll()
+                   .requestMatchers(HttpMethod.POST, "/api/solo").permitAll()
                    .anyRequest().authenticated()
                .and()
                .csrf().disable()
