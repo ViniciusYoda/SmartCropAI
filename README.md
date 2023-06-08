@@ -2,7 +2,7 @@
 
 Api para controle de usuário, solo, clima do app SmartCropAI
 
-![uml](uml.jpeg)
+![uml](/uml.jpeg)
 
 ## Endpoints
 
