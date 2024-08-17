@@ -1,4 +1,4 @@
-# SmartCropAI
+# SmartCropAI:
 
 Api para controle de usuário, solo, clima do app SmartCropAI
 
